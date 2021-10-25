@@ -4,6 +4,8 @@
 ## 작성자 : 김수연
 ## 내용 : Console 기반의 햄버거를 판매하는 키오스크 프로그램
 
+import choice_menu as choice
+
 # 조건
 # 사용자는 최대로 버거 1개, 사이드 1개, 음료 1개 주문할 수 있습니다.
 
@@ -47,106 +49,37 @@ while True:
 ####################
 
 if menu_num == 1:     # 햄버거 세트
-  print('##########################################')
-  print('## BURGER MENU')
-  print('## 1. 치즈버거: 3,500원')
-  print('## 2. 불고기버거: 3,000원')
-  print('## 3. 새우버거: 2,500원')
-  print('##########################################')
-  print('## 원하시는 메뉴의 번호를 입력해주세요.')
+    # choice => choice_menu.py
+    # choice.choice_burger() => choice_menu.py에서 choice_burger() 함수를 호출   choice.choice_burger()
+    choice_num = choice.choice_burger()
+    menu_save['burger'] = burger_name[choice_num]
+    price_save['burger'] = burger_price[choice_num]
 
-  while True:
-      choice_num = int(input('>> 번호:'))
-      if choice_num >= 1 and choice_num <= 3:
-          menu_save['burger'] = burger_name[choice_num]
-          price_save['burger'] = burger_price[choice_num]
-          break
-      else:
-          print('# MSG: 1~3의 번호만 입력해주세요:)')
+    choice_num2 = choice.choice_side()
+    menu_save['side'] = side_name[choice_num2]
+    price_save['side'] = side_price[choice_num2]
 
-  print('##########################################')
-  print('## SIDE MENU')
-  print('## 1. 감자튀김: 1,500원')
-  print('## 2. 치킨너겟: 2,000원')
-  print('## 원하시는 메뉴의 번호를 입력해주세요')
-  print('##########################################')
-  while True:
-      choice_num2 = int(input('>> 번호:'))
-      if choice_num2 >= 1 and choice_num2 <= 2:
-          menu_save['side'] = side_name[choice_num2]
-          price_save['side'] = side_price[choice_num2]
-          break
-      else:
-          print('# MSG: 1~2의 번호만 입력해주세요 :)')
-
-  print('###########################################')
-  print('## DRINK MENU')
-  print('## 1. 코카콜라: 1,000원')
-  print('## 2. 커피: 1,200원')
-  print('## 3. 주스: 1,500원')
-  print('## 원하시는 메뉴의 번호를 입력해주세요')
-  print('###########################################')
-
-  while True:
-      choice_num3 = int(input('>> 번호:'))
-      if choice_num3 >= 1 and choice_num3 <= 3:
-          menu_save['drink'] = drink_name[choice_num3]
-          price_save['drink'] = drink_price[choice_num3]
-          break
-      else:
-          print('# MSG: 1~3의 번호만 입력해 주세요:)')
+    choice_num3 = choice.choice_drink()
+    menu_save['drink'] = drink_name[choice_num3]
+    price_save['drink'] = drink_price[choice_num3]
 
 elif menu_num == 2:    # 햄버거 단품
-    print('##########################################')
-    print('## BURGER MENU')
-    print('## 1. 치즈버거: 3,500원')
-    print('## 2. 불고기버거: 3,000원')
-    print('## 3. 새우버거: 2,500원')
-    print('##########################################')
-    print('## 원하시는 메뉴의 번호를 입력해주세요.')
+    choice_num = choice.choice_burger()
+    menu_save['burger'] = burger_name[choice_num]
+    price_save['burger'] = burger_price[choice_num]
 
-    while True:
-        choice_num = int(input('>> 번호:'))
-        if choice_num >= 1 and choice_num <= 3:
-            menu_save['burger'] = burger_name[choice_num]
-            price_save['burger'] = burger_price[choice_num]
-            break
-        else:
-            print('# MSG: 1~3의 번호만 입력해주세요:)')
 
 elif menu_num == 3:    # 사이드 메뉴
-    print('##########################################')
-    print('## SIDE MENU')
-    print('## 1. 감자튀김: 1,500원')
-    print('## 2. 치킨너겟: 2,000원')
-    print('## 원하시는 메뉴의 번호를 입력해주세요')
-    print('##########################################')
-    while True:
-        choice_num2 = int(input('>> 번호:'))
-        if choice_num2 >= 1 and choice_num2 <= 2:
-            menu_save['side'] = side_name[choice_num2]
-            price_save['side'] = side_price[choice_num2]
-            break
-        else:
-            print('# MSG: 1~2의 번호만 입력해주세요 :)')
+    choice_num2 = choice.choice_side()
+    menu_save['side'] = side_name[choice_num2]
+    price_save['side'] = side_price[choice_num2]
+
 
 elif menu_num == 4:    # 음료
-    print('###########################################')
-    print('## DRINK MENU')
-    print('## 1. 코카콜라: 1,000원')
-    print('## 2. 커피: 1,200원')
-    print('## 3. 주스: 1,500원')
-    print('## 원하시는 메뉴의 번호를 입력해주세요')
-    print('###########################################')
+    choice_num3 = choice.choice_drink()
+    menu_save['drink'] = drink_name[choice_num3]
+    price_save['drink'] = drink_price[choice_num3]
 
-    while True:
-        choice_num3 = int(input('>> 번호:'))
-        if choice_num3 >= 1 and choice_num3 <= 3:
-            menu_save['drink'] = drink_name[choice_num3]
-            price_save['drink'] = drink_price[choice_num3]
-            break
-        else:
-            print('# MSG: 1~3의 번호만 입력해 주세요:)')
 
 ##############################
 ## 주문 메뉴와 금액 정산 및 출력 ##
